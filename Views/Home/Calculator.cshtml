@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Tutoring Calculator";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Tutoring Calculator</h1>
+    <p>Enter the number of hours you need to see the total cost.</p>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6 card p-4 shadow-sm">
+        <form>
+            <div class="form-group mb-3">
+                <label for="hours" class="form-label font-weight-bold">Hours Needed:</label>
+                <input type="number"
+                       class="form-control"
+                       id="hours"
+                       placeholder="Enter hours (e.g. 2)"
+                       min="1" />
+                <span id="validationMessage" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="rate" class="form-label font-weight-bold">Hourly Rate:</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text"
+                           class="form-control"
+                           id="rate"
+                           value="20.00"
+                           readonly />
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 mb-3">
+                <button type="button" id="calculateBtn" class="btn btn-primary btn-lg">
+                    Calculate Total
+                </button>
+            </div>
+
+            <div class="form-group">
+                <label for="total" class="form-label font-weight-bold">Total Cost:</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text"
+                           class="form-control font-weight-bold"
+                           id="total"
+                           readonly />
+                </div>
+            </div>
+        </form>
+
+        <div class="text-center mt-3">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary btn-sm">
+                &larr; Back to Home
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#calculateBtn").click(function () {
+                // 1. Get the value from the hours box
+                var hours = $("#hours").val();
+
+                // 2. Get the rate (stripping the $ sign if necessary, though here it's just a number)
+                var rate = parseFloat($("#rate").val());
+
+                // 3. Validation: Check if positive number
+                if (hours > 0) {
+                    // Clear error message
+                    $("#validationMessage").text("");
+
+                    // Calculate total
+                    var total = hours * rate;
+
+                    // Output to the total box (formatted to 2 decimal places)
+                    $("#total").val(total.toFixed(2));
+                } else {
+                    // Show error
+                    $("#validationMessage").text("Please enter a valid positive number of hours.");
+                    $("#total").val("");
+                }
+            });
+        });
+    </script>
+}

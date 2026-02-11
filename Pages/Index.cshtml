@@ -1,10 +1,70 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    // This sets the page title if you ever decide to use ViewData again.
+    // Even though the layout uses a fixed title, this is clean MVC practice.
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<!-- Main heading introducing the site -->
+<h1 class="text-center mt-4">
+    Rocket League Coaching & Tutoring
+</h1>
+
+<!-- Short intro paragraph -->
+<p class="text-center">
+    Learn how to rank up, rotate properly, and play smarter Rocket League.
+</p>
+
+<hr />
+
+<!-- First image and description -->
+<div class="row align-items-center mb-4">
+    <div class="col-md-6">
+        <img src="~/images/rocketleague1.jfif"
+             alt="Rocket League gameplay"
+             class="img-fluid rounded" />
+    </div>
+    <div class="col-md-6">
+        <p>
+            Rocket League is a fast-paced competitive game that combines soccer
+            with rocket-powered cars. Success in Rocket League depends on strong
+            mechanics, smart positioning, and solid teamwork.
+        </p>
+        <p>
+            I’ve spent countless hours improving my skills across multiple ranks,
+            learning what separates average players from consistent winners.
+        </p>
+    </div>
 </div>
+
+<!-- Second image and description -->
+<div class="row align-items-center mb-4">
+    <div class="col-md-6 order-md-2">
+        <img src="~/images/rocketleague2.jfif"
+             alt="Rocket League car and ball"
+             class="img-fluid rounded" />
+    </div>
+    <div class="col-md-6 order-md-1">
+        <p>
+            Through personalized tutoring, I help players understand rotations,
+            decision-making, and mechanical fundamentals like aerials and ball
+            control.
+        </p>
+        <p>
+            Whether you're brand new or trying to break into higher ranks,
+            structured coaching can dramatically speed up your improvement.
+        </p>
+    </div>
+</div>
+
+<!-- Call-to-action navigation -->
+<div class="text-center mt-4">
+    <a class="btn btn-primary"
+       asp-controller="Home"
+       asp-action="Calculator">
+        Calculate Tutoring Cost
+    </a>
+</div>
+
